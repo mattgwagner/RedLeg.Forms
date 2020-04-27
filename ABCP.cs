@@ -44,7 +44,7 @@ namespace RedLeg.Forms
         }
 
         [Display(Name = "Screening Weight")]
-        public Decimal Screening_Weight
+        internal Decimal Screening_Weight
         {
             get
             {
@@ -59,11 +59,11 @@ namespace RedLeg.Forms
         }
 
         [Display(Name = "Requires Taping?")]
-        public Boolean RequiresTape => Screening_Weight < Weight;
+        internal Boolean RequiresTape => Screening_Weight < Weight;
 
         public ICollection<Measurement> Measurements { get; set; } = new List<Measurement>();
 
-        public Boolean AreMeasurementsValid
+        internal Boolean AreMeasurementsValid
         {
             // Returns false if any measurement is greater than 1 inch away from another measurement
 
@@ -80,14 +80,14 @@ namespace RedLeg.Forms
             }
         }
 
-        public Double WaistAverage => Average_To_Half(Measurements.Select(_ => _.Waist));
+        internal Double WaistAverage => Average_To_Half(Measurements.Select(_ => _.Waist));
 
-        public Double NeckAverage => Average_To_Half(Measurements.Select(_ => _.Neck));
+        internal Double NeckAverage => Average_To_Half(Measurements.Select(_ => _.Neck));
 
-        public Double HipAverage => Average_To_Half(Measurements.Select(_ => _.Hips));
+        internal Double HipAverage => Average_To_Half(Measurements.Select(_ => _.Hips));
 
         [Display(Name = "Circumference Value")]
-        public Double CircumferenceValue
+        internal Double CircumferenceValue
         {
             get
             {
@@ -104,7 +104,7 @@ namespace RedLeg.Forms
         }
 
         [Display(Name = "Calculated Body Fat %")]
-        public Double BodyFatPercentage
+        internal Double BodyFatPercentage
         {
             get
             {
@@ -121,7 +121,7 @@ namespace RedLeg.Forms
         }
 
         [Display(Name = "Max Body Fat %")]
-        public Double MaximumAllowableBodyFat
+        internal Double MaximumAllowableBodyFat
         {
             get
             {
@@ -136,10 +136,10 @@ namespace RedLeg.Forms
         }
 
         [Display(Name = "Is Passing Tape?")]
-        public Boolean IsPassingTape => RequiresTape && Measurements.Any() && BodyFatPercentage <= MaximumAllowableBodyFat;
+        internal Boolean IsPassingTape => RequiresTape && Measurements.Any() && BodyFatPercentage <= MaximumAllowableBodyFat;
 
         [Display(Name = "Is Passing?")]
-        public Boolean IsPassing => !RequiresTape || IsPassingTape;
+        internal Boolean IsPassing => !RequiresTape || IsPassingTape;
 
         public class Measurement
         {
