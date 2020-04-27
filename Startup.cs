@@ -28,6 +28,8 @@ namespace RedLeg.Forms
                     }
                 });
 
+                c.MapType<FileContentResult>(() => new Microsoft.OpenApi.Models.OpenApiSchema { Type = "file" });
+
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "RedLeg.Forms.xml"));
             });
 

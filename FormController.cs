@@ -14,8 +14,8 @@ namespace RedLeg.Forms
     [Route("/")]
     public partial class FormController : Controller
     {
-        [HttpPost("[action]"), Produces(typeof(FileResult))]
-        public FileContentResult DA4856([FromBody]Counseling model)
+        [HttpPost("[action]"), Produces(typeof(FileContentResult))]
+        public IActionResult DA4856([FromBody]Counseling model)
         {
             const String prefix = "form1[0]";
 
@@ -44,8 +44,8 @@ namespace RedLeg.Forms
             }
         }
 
-        [HttpPost("[action]"), Produces(typeof(FileResult))]
-        public FileContentResult DA5500([FromBody]ABCP model)
+        [HttpPost("[action]"), Produces(typeof(FileContentResult))]
+        public IActionResult DA5500([FromBody]ABCP model)
         {
             const String prefix = "form1[0].Page1[0]";
 
@@ -127,8 +127,8 @@ namespace RedLeg.Forms
             }
         }
 
-        [HttpPost("[action]"), Produces(typeof(FileResult))]
-        public FileContentResult DA5501([FromBody]ABCP model)
+        [HttpPost("[action]"), Produces(typeof(FileContentResult))]
+        public IActionResult DA5501([FromBody]ABCP model)
         {
             const String prefix = "form1[0]";
 
@@ -203,14 +203,14 @@ namespace RedLeg.Forms
             }
         }
 
-        [HttpPost("[action]"), Produces(typeof(FileResult))]
-        public FileContentResult DA705([FromBody]APFT model)
+        [HttpPost("[action]"), Produces(typeof(FileContentResult))]
+        public IActionResult DA705([FromBody]APFT model)
         {
             throw new NotImplementedException();
         }
 
-        [HttpPost("[action]"), Produces(typeof(FileResult))]
-        public FileContentResult DA3749([FromBody]WeaponCard model)
+        [HttpPost("[action]"), Produces(typeof(FileContentResult))]
+        public IActionResult DA3749([FromBody]WeaponCard model)
         {
             throw new NotImplementedException();
         }
