@@ -15,7 +15,7 @@ namespace RedLeg.Forms
     public partial class FormController : Controller
     {
         [HttpPost("[action]")]
-        public FileContentResult DA4856([FromForm]Counseling model)
+        public FileContentResult DA4856([FromBody]Counseling model)
         {
             const String prefix = "form1[0]";
 
@@ -45,7 +45,7 @@ namespace RedLeg.Forms
         }
 
         [HttpPost("[action]")]
-        public FileContentResult DA5500([FromForm]ABCP model)
+        public FileContentResult DA5500([FromBody]ABCP model)
         {
             const String prefix = "form1[0].Page1[0]";
 
@@ -128,7 +128,7 @@ namespace RedLeg.Forms
         }
 
         [HttpPost("[action]")]
-        public FileContentResult DA5501([FromForm]ABCP model)
+        public FileContentResult DA5501([FromBody]ABCP model)
         {
             const String prefix = "form1[0]";
 
@@ -204,13 +204,13 @@ namespace RedLeg.Forms
         }
 
         [HttpPost("[action]")]
-        public FileContentResult DA705([FromForm]APFT model)
+        public FileContentResult DA705([FromBody]APFT model)
         {
             throw new NotImplementedException();
         }
 
         [HttpPost("[action]")]
-        public FileContentResult DA3749([FromForm]WeaponCard model)
+        public FileContentResult DA3749([FromBody]WeaponCard model)
         {
             throw new NotImplementedException();
         }
