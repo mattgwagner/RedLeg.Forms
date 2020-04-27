@@ -16,12 +16,16 @@ namespace RedLeg.Forms
         {
             services.AddSwaggerGen(c =>
             {
-                // TODO Add Contact Information, Terms of Service
-
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Title = "RedLeg.Forms",
-                    Version = "v1"
+                    Version = "v1",
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                    {
+                        Name = "Matt Wagner",
+                        Email = "Matt@RedLeg.dev",
+                        Url = new Uri("https://github.com/mattgwagner/RedLeg.Forms")
+                    }
                 });
 
                 c.CustomSchemaIds(x => x.FullName);
@@ -57,8 +61,6 @@ namespace RedLeg.Forms
             {
                 endpoints.MapDefaultControllerRoute();
             });
-
-           
         }
     }
 }
