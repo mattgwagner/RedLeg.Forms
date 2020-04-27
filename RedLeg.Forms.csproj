@@ -6,9 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ABCP.csv" />
     <None Remove="DA4856.pdf" />
     <None Remove="DA5500.pdf" />
     <None Remove="DA5501.pdf" />
+    <EmbeddedResource Include="ABCP.csv" />
     
     <EmbeddedResource Include="DA4856.pdf" />
     <EmbeddedResource Include="DA5500.pdf" />
