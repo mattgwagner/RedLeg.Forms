@@ -14,9 +14,6 @@ namespace RedLeg.Forms
     [Route("/")]
     public partial class FormController : Controller
     {
-        [HttpGet, ApiExplorerSettings(IgnoreApi = true)]
-        public ActionResult Index() => Redirect("/swagger");
-
         [HttpPost("[action]")]
         public FileContentResult DA4856([FromForm]Counseling model)
         {

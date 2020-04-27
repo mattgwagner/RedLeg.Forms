@@ -59,6 +59,7 @@ namespace RedLeg.Forms
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "RedLeg.Forms");
+                c.RoutePrefix = string.Empty;
             });
 
             app.UseEndpoints(endpoints =>
