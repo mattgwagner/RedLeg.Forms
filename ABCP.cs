@@ -31,7 +31,7 @@ namespace RedLeg.Forms
         [Required, Range(0, 400)]
         public int Weight { get; set; }
 
-        public ABCPAgeGroup AgeGroup
+        internal ABCPAgeGroup AgeGroup
         {
             get
             {
@@ -61,9 +61,7 @@ namespace RedLeg.Forms
         [Display(Name = "Requires Taping?")]
         public Boolean RequiresTape => Screening_Weight < Weight;
 
-
         public ICollection<Measurement> Measurements { get; set; } = new List<Measurement>();
-
 
         public Boolean AreMeasurementsValid
         {
