@@ -48,7 +48,7 @@ namespace RedLeg.Forms
         }
 
         [HttpPost("[action]")]
-        public FileContentResult DA5500(ABCP model)
+        public FileContentResult DA5500([FromForm]ABCP model)
         {
             const String prefix = "form1[0].Page1[0]";
 
@@ -131,7 +131,7 @@ namespace RedLeg.Forms
         }
 
         [HttpPost("[action]")]
-        public FileContentResult DA5501(ABCP model)
+        public FileContentResult DA5501([FromForm]ABCP model)
         {
             const String prefix = "form1[0]";
 
@@ -207,13 +207,13 @@ namespace RedLeg.Forms
         }
 
         [HttpPost("[action]")]
-        public FileContentResult DA705()
+        public FileContentResult DA705([FromForm]APFT model)
         {
             throw new NotImplementedException();
         }
 
         [HttpPost("[action]")]
-        public FileContentResult DA3749()
+        public FileContentResult DA3749([FromForm]WeaponCard model)
         {
             throw new NotImplementedException();
         }
