@@ -28,8 +28,6 @@ namespace RedLeg.Forms
                     }
                 });
 
-                c.CustomSchemaIds(x => x.FullName);
-
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "RedLeg.Forms.xml"));
             });
 
