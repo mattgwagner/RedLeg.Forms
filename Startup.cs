@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.IO;
 
 namespace RedLeg.Forms
 {
@@ -12,7 +14,20 @@ namespace RedLeg.Forms
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add Swagger Gen
+            services.AddSwaggerGen(c =>
+            {
+                // TODO Add Contact Information, Terms of Service
+
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "RedLeg.Forms",
+                    Version = "v1"
+                });
+
+                c.CustomSchemaIds(x => x.FullName);
+
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "RedLeg.Forms.xml"));
+            });
 
             services
                 .AddMvc()
@@ -36,7 +51,10 @@ namespace RedLeg.Forms
                 endpoints.MapDefaultControllerRoute();
             });
 
-            // Add Swagger UI
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "RedLeg.Forms");
+            });
         }
     }
 }
