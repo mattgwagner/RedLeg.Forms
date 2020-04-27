@@ -14,7 +14,7 @@ namespace RedLeg.Forms
         public ActionResult Index() => Redirect("/swagger");
 
         [HttpPost("[action]")]
-        public FileContentResult DA4856([FromBody]Counseling model)
+        public FileContentResult DA4856([FromForm]Counseling model)
         {
             const String prefix = "form1[0]";
 

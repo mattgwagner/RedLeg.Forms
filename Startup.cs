@@ -35,6 +35,10 @@ namespace RedLeg.Forms
 
             services
                 .AddMvc()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+                })
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
         }
 
