@@ -14,7 +14,7 @@ namespace RedLeg.Forms
     [Route("/")]
     public partial class FormController : Controller
     {
-        [HttpPost("[action]"), Produces("application/pdf", Type = typeof(FileContentResult))]
+        [HttpPost("[action]", Name = "GenerateDA4856"), Produces("application/pdf", Type = typeof(FileContentResult))]
         public IActionResult DA4856([FromBody]Counseling model)
         {
             const String prefix = "form1[0]";
@@ -44,7 +44,7 @@ namespace RedLeg.Forms
             }
         }
 
-        [HttpPost("[action]"), Produces("application/pdf", Type = typeof(FileContentResult))]
+        [HttpPost("[action]", Name = "GenerateDA5500"), Produces("application/pdf", Type = typeof(FileContentResult))]
         public IActionResult DA5500([FromBody]ABCP model)
         {
             const String prefix = "form1[0].Page1[0]";
@@ -127,7 +127,7 @@ namespace RedLeg.Forms
             }
         }
 
-        [HttpPost("[action]"), Produces("application/pdf", Type = typeof(FileContentResult))]
+        [HttpPost("[action]", Name = "GenerateDA5501"), Produces("application/pdf", Type = typeof(FileContentResult))]
         public IActionResult DA5501([FromBody]ABCP model)
         {
             const String prefix = "form1[0]";
@@ -203,17 +203,17 @@ namespace RedLeg.Forms
             }
         }
 
-        [HttpPost("[action]"), Produces("application/pdf", Type = typeof(FileContentResult))]
-        public IActionResult DA705([FromBody]APFT model)
-        {
-            throw new NotImplementedException();
-        }
+        //[HttpPost("[action]", Name = "GenerateDA705"), Produces("application/pdf", Type = typeof(FileContentResult))]
+        //public IActionResult DA705([FromBody]APFT model)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        [HttpPost("[action]"), Produces("application/pdf", Type = typeof(FileContentResult))]
-        public IActionResult DA3749([FromBody]WeaponCard model)
-        {
-            throw new NotImplementedException();
-        }
+        //[HttpPost("[action]", Name = "GenerateDA3749")), Produces("application/pdf", Type = typeof(FileContentResult))]
+        //public IActionResult DA3749([FromBody]WeaponCard model)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         private static string DisplayName(Enum val)
         {
