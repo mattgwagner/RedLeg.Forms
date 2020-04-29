@@ -218,11 +218,38 @@ namespace RedLeg.Forms
         //    throw new NotImplementedException();
         //}
 
-        //[HttpPost("[action]", Name = "GenerateDA3749")), Produces("application/pdf", Type = typeof(FileContentResult))]
-        //public IActionResult DA3749([FromBody]WeaponCard model)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        /// <summary>
+        /// Generate a DA 3749 Equipment Receipt as PDF
+        /// </summary>
+        [HttpPost("[action]", Name = "GenerateDA3749"), Produces("application/pdf", Type = typeof(FileContentResult))]
+        public IActionResult DA3749([FromBody]EquipmentReceipt model)
+        {
+            const String prefix = "form1[0].Page1[0]";
+
+            using (var stream = typeof(Program).GetTypeInfo().Assembly.GetManifestResourceStream("RedLeg.Forms.DA3749.pdf"))
+            using (var output = new MemoryStream())
+            {
+                var reader = new PdfReader(stream);
+                var stamper = new PdfStamper(reader, output);
+
+                var form = stamper.AcroFields;
+
+                // Update the form fields as appropriate -- 4 per page, _B, _C, _D
+
+                form.SetField($"{prefix}.UNIT[0]", $"{model.Unit}");
+                form.SetField($"{prefix}.RECEIPT[0]", $"{model.ReceiptNumber}");
+                form.SetField($"{prefix}.STOCK[0]", $"{model.StockNumber}");
+                form.SetField($"{prefix}.SERIAL[0]", $"{model.SerialNumber}");
+                form.SetField($"{prefix}.DESCRIPT[0]", $"{model.Description}");
+                form.SetField($"{prefix}.FROM[0]", $"{model.From}");
+                form.SetField($"{prefix}.NAME[0]", $"{model.Name}");
+                form.SetField($"{prefix}.GRADE[0]", $"{ShortName(model.Grade)}");
+
+                stamper.Close();
+
+                return File(output.ToArray(), "application/pdf", "DA3749-Equipment-Receipt.pdf");
+            }
+        }
 
         private static string DisplayName(Enum val)
         {
