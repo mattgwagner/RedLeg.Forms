@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace RedLeg.Forms
 {
@@ -20,7 +14,9 @@ namespace RedLeg.Forms
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder
+                        .UseSentry(dsn: "https://31730b790946460e8c5c786136c81231@o255975.ingest.sentry.io/5218373")
+                        .UseStartup<Startup>();
                 });
     }
 }
