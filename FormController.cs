@@ -14,6 +14,9 @@ namespace RedLeg.Forms
     [Route("/")]
     public partial class FormController : Controller
     {
+        /// <summary>
+        /// Generates a DA 4856 Developmental Counseling Form as PDF
+        /// </summary>
         [HttpPost("[action]", Name = "GenerateDA4856"), Produces("application/pdf", Type = typeof(FileContentResult))]
         public IActionResult DA4856([FromBody]Counseling model)
         {
@@ -44,6 +47,9 @@ namespace RedLeg.Forms
             }
         }
 
+        /// <summary>
+        /// Generates a DA 5500 Body Composition Worksheet (Male) as PDF
+        /// </summary>
         [HttpPost("[action]", Name = "GenerateDA5500"), Produces("application/pdf", Type = typeof(FileContentResult))]
         public IActionResult DA5500([FromBody]ABCP model)
         {
@@ -127,6 +133,9 @@ namespace RedLeg.Forms
             }
         }
 
+        /// <summary>
+        /// Generates a DA 5501 Body Composition Worksheet (Female) as PDF
+        /// </summary>
         [HttpPost("[action]", Name = "GenerateDA5501"), Produces("application/pdf", Type = typeof(FileContentResult))]
         public IActionResult DA5501([FromBody]ABCP model)
         {
