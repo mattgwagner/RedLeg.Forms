@@ -18,7 +18,7 @@ jobs:
       run: dotnet publish RedLeg.Forms.csproj --configuration Release --output ${{env.DOTNET_ROOT}}/artifacts 
 
     - name: Azure WebApp
-      uses: Azure/webapps-deploy@v1
+      uses: Azure/webapps-deploy@v2.1
       if: contains(github.ref, 'master')
       with:
         # Publish profile (*.publishsettings) file contents with Web Deploy secrets
