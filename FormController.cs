@@ -1,8 +1,6 @@
 ﻿using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
@@ -251,7 +249,7 @@ namespace RedLeg.Forms
         [HttpPost("[action]", Name = "GenerateDA4655R"), Produces("application/pdf", Type = typeof(FileContentResult))]
         public IActionResult DA4655R([FromBody] TargetListWorksheet model)
         {
-            const String prefix = "form1[0].Page1[0]";
+            const String prefix = "form1[0].Page1[0].#subform[0]";
 
             using (var stream = typeof(Program).GetTypeInfo().Assembly.GetManifestResourceStream("RedLeg.Forms.DA4655_R.pdf"))
             using (var output = new MemoryStream())
@@ -261,9 +259,41 @@ namespace RedLeg.Forms
 
                 var form = stamper.AcroFields;
 
+                int row = 0;
+
                 foreach (var target in model.Targets)
                 {
-                    // TODO
+                    // FIRST ROW NO _
+
+                    var row_suffix = row > 0 ? $"_{row}" : "";
+
+                    form.SetField($"{prefix}.TARGET[0]{row_suffix}", target.TargetNumber);
+                    form.SetField($"{prefix}.DESC[0]{row_suffix}", target.Description);
+                    form.SetField($"{prefix}.LOC[0]{row_suffix}", target.Location);
+                    form.SetField($"{prefix}.ALT[0]{row_suffix}", target.Altitude);
+                    form.SetField($"{prefix}.ATT[0]{row_suffix}", target.Attitude);
+                    form.SetField($"{prefix}.LENGTH[0]{row_suffix}", target.SizeLength);
+                    form.SetField($"{prefix}.WIDTH[0]{row_suffix}", target.SizeWidth);
+                    form.SetField($"{prefix}.SOURCE[0]{row_suffix}", target.SourceOrAccuracy);
+                    form.SetField($"{prefix}.REMARKS[0]{row_suffix}", target.Remarks);
+                    form.SetField($"{prefix}.UNK_A[0]{row_suffix}", target.Group_1);
+                    form.SetField($"{prefix}.UNK_B[0]{row_suffix}", target.Group_2);
+                    form.SetField($"{prefix}.UNK_C[0]{row_suffix}", target.Group_3);
+                    form.SetField($"{prefix}.UNK_D[0]{row_suffix}", target.Group_4);
+                    form.SetField($"{prefix}.UNK_E[0]{row_suffix}", target.Group_5);
+
+                    // ATT_{#}
+                    // UNK_(A,B,C,D,E)_{#}
+                    // LOC_{#}
+                    // REMARKS_{#}
+                    // WIDTH_{#}
+                    // LENGTH_{#}
+                    // DESC_{#}
+                    // ALT_{#}
+                    // TARGET_{#}
+                    // SOURCE_{#}
+
+                    row++;
                 }
 
                 stamper.Close();
