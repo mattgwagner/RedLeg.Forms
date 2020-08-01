@@ -63,13 +63,6 @@ namespace RedLeg.Forms
 
                 var form = stamper.AcroFields;
 
-#if DEBUG
-                foreach (DictionaryEntry de in form.Fields)
-                {
-                    Console.WriteLine($"{de.Key}");
-                }
-#endif
-
                 // Update the form fields as appropriate
 
                 var name = $"{model.Soldier.LastName}, {model.Soldier.FirstName} {model.Soldier.MiddleName?.ToCharArray().FirstOrDefault()}";
@@ -248,6 +241,35 @@ namespace RedLeg.Forms
                 stamper.Close();
 
                 return File(output.ToArray(), "application/pdf", "DA3749-Equipment-Receipt.pdf");
+            }
+        }
+
+        /// <summary>
+        /// Generate a DA 3749 Equipment Receipt as PDF
+        /// </summary>
+        [HttpPost("[action]", Name = "GenerateDA4655R"), Produces("application/pdf", Type = typeof(FileContentResult))]
+        public IActionResult DA4655R([FromBody] TargetListWorksheet model)
+        {
+            const String prefix = "form1[0].Page1[0]";
+
+            using (var stream = typeof(Program).GetTypeInfo().Assembly.GetManifestResourceStream("RedLeg.Forms.DA4655_R.pdf"))
+            using (var output = new MemoryStream())
+            {
+                var reader = new PdfReader(stream);
+                var stamper = new PdfStamper(reader, output);
+
+                var form = stamper.AcroFields;
+
+#if DEBUG
+                foreach (DictionaryEntry de in form.Fields)
+                {
+                    Console.WriteLine($"{de.Key}");
+                }
+#endif
+
+                stamper.Close();
+
+                return File(output.ToArray(), "application/pdf", "DA4655-R-Target-List-Worksheet.pdf");
             }
         }
 
