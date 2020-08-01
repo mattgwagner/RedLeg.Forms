@@ -11,12 +11,14 @@
     <None Remove="DA4856.pdf" />
     <None Remove="DA5500.pdf" />
     <None Remove="DA5501.pdf" />
-    <EmbeddedResource Include="ABCP.csv" />
-    <EmbeddedResource Include="DA3749.pdf" />
+    <None Remove="DA4655_R.pdf" />
     
+    <EmbeddedResource Include="ABCP.csv" />
+    <EmbeddedResource Include="DA3749.pdf" />    
     <EmbeddedResource Include="DA4856.pdf" />
     <EmbeddedResource Include="DA5500.pdf" />
     <EmbeddedResource Include="DA5501.pdf" />
+    <EmbeddedResource Include="DA4655_R.pdf" />
   </ItemGroup>
 
   <ItemGroup>
