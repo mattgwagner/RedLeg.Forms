@@ -244,7 +244,7 @@ namespace RedLeg.Forms
         }
 
         /// <summary>
-        /// Generate a DA 4655-RTarget List Worksheet
+        /// Generate a DA 4655-R Target List Worksheet
         /// </summary>
         [HttpPost("[action]", Name = "GenerateDA4655R"), Produces("application/pdf", Type = typeof(FileContentResult))]
         public IActionResult DA4655R([FromBody] TargetListWorksheet model)
