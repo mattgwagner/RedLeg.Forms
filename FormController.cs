@@ -267,20 +267,20 @@ namespace RedLeg.Forms
 
                     var row_suffix = row > 0 ? $"_{row}" : "";
 
-                    form.SetField($"{prefix}.TARGET[0]{row_suffix}", target.TargetNumber);
-                    form.SetField($"{prefix}.DESC[0]{row_suffix}", target.Description);
-                    form.SetField($"{prefix}.LOC[0]{row_suffix}", target.Location);
-                    form.SetField($"{prefix}.ALT[0]{row_suffix}", target.Altitude);
-                    form.SetField($"{prefix}.ATT[0]{row_suffix}", target.Attitude);
-                    form.SetField($"{prefix}.LENGTH[0]{row_suffix}", target.SizeLength);
-                    form.SetField($"{prefix}.WIDTH[0]{row_suffix}", target.SizeWidth);
-                    form.SetField($"{prefix}.SOURCE[0]{row_suffix}", target.SourceOrAccuracy);
-                    form.SetField($"{prefix}.REMARKS[0]{row_suffix}", target.Remarks);
-                    form.SetField($"{prefix}.UNK_A[0]{row_suffix}", target.Group_1);
-                    form.SetField($"{prefix}.UNK_B[0]{row_suffix}", target.Group_2);
-                    form.SetField($"{prefix}.UNK_C[0]{row_suffix}", target.Group_3);
-                    form.SetField($"{prefix}.UNK_D[0]{row_suffix}", target.Group_4);
-                    form.SetField($"{prefix}.UNK_E[0]{row_suffix}", target.Group_5);
+                    form.SetField($"{prefix}.TARGET{row_suffix}[0]", target.TargetNumber);
+                    form.SetField($"{prefix}.DESC{row_suffix}[0]", target.Description);
+                    form.SetField($"{prefix}.LOC{row_suffix}[0]", target.Location);
+                    form.SetField($"{prefix}.ALT{row_suffix}[0]", target.Altitude);
+                    form.SetField($"{prefix}.ATT{row_suffix}[0]", target.Attitude);
+                    form.SetField($"{prefix}.LENGTH{row_suffix}[0]", target.SizeLength);
+                    form.SetField($"{prefix}.WIDTH{row_suffix}[0]", target.SizeWidth);
+                    form.SetField($"{prefix}.SOURCE{row_suffix}[0]", target.SourceOrAccuracy);
+                    form.SetField($"{prefix}.REMARKS{row_suffix}[0]", target.Remarks);
+                    form.SetField($"{prefix}.UNK_A{row_suffix}[0]", target.Group_1);
+                    form.SetField($"{prefix}.UNK_B{row_suffix}[0]", target.Group_2);
+                    form.SetField($"{prefix}.UNK_C{row_suffix}[0]", target.Group_3);
+                    form.SetField($"{prefix}.UNK_D{row_suffix}[0]", target.Group_4);
+                    form.SetField($"{prefix}.UNK_E{row_suffix}[0]", target.Group_5);
 
                     // ATT_{#}
                     // UNK_(A,B,C,D,E)_{#}
