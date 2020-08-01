@@ -1,5 +1,6 @@
 ﻿using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace RedLeg.Forms
         /// Generates a DA 4856 Developmental Counseling Form as PDF
         /// </summary>
         [HttpPost("[action]", Name = "GenerateDA4856"), Produces("application/pdf", Type = typeof(FileContentResult))]
-        public IActionResult DA4856([FromBody]Counseling model)
+        public IActionResult DA4856([FromBody] Counseling model)
         {
             const String prefix = "form1[0]";
 
@@ -51,7 +52,7 @@ namespace RedLeg.Forms
         /// Generates a DA 5500 Body Composition Worksheet (Male) as PDF
         /// </summary>
         [HttpPost("[action]", Name = "GenerateDA5500"), Produces("application/pdf", Type = typeof(FileContentResult))]
-        public IActionResult DA5500([FromBody]ABCP model)
+        public IActionResult DA5500([FromBody] ABCP model)
         {
             const String prefix = "form1[0].Page1[0]";
 
@@ -130,7 +131,7 @@ namespace RedLeg.Forms
         /// Generates a DA 5501 Body Composition Worksheet (Female) as PDF
         /// </summary>
         [HttpPost("[action]", Name = "GenerateDA5501"), Produces("application/pdf", Type = typeof(FileContentResult))]
-        public IActionResult DA5501([FromBody]ABCP model)
+        public IActionResult DA5501([FromBody] ABCP model)
         {
             const String prefix = "form1[0]";
 
@@ -215,7 +216,7 @@ namespace RedLeg.Forms
         /// Generate a DA 3749 Equipment Receipt as PDF
         /// </summary>
         [HttpPost("[action]", Name = "GenerateDA3749"), Produces("application/pdf", Type = typeof(FileContentResult))]
-        public IActionResult DA3749([FromBody]EquipmentReceipt model)
+        public IActionResult DA3749([FromBody] EquipmentReceipt model)
         {
             const String prefix = "form1[0].Page1[0]";
 
@@ -245,7 +246,7 @@ namespace RedLeg.Forms
         }
 
         /// <summary>
-        /// Generate a DA 3749 Equipment Receipt as PDF
+        /// Generate a DA 4655-RTarget List Worksheet
         /// </summary>
         [HttpPost("[action]", Name = "GenerateDA4655R"), Produces("application/pdf", Type = typeof(FileContentResult))]
         public IActionResult DA4655R([FromBody] TargetListWorksheet model)
@@ -260,12 +261,10 @@ namespace RedLeg.Forms
 
                 var form = stamper.AcroFields;
 
-#if DEBUG
-                foreach (DictionaryEntry de in form.Fields)
+                foreach (var target in model.Targets)
                 {
-                    Console.WriteLine($"{de.Key}");
+                    // TODO
                 }
-#endif
 
                 stamper.Close();
 
