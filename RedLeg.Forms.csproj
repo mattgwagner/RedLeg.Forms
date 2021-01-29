@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="iTextSharp.LGPLv2.Core" Version="1.7.0" />
+    <PackageReference Include="iTextSharp.LGPLv2.Core" Version="1.7.1" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
     <PackageReference Include="Sentry.AspNetCore" Version="2.1.8" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
