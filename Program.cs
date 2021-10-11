@@ -8,8 +8,6 @@ namespace RedLeg.Forms
 {
     public class Program
     {
-        public static LoggingLevelSwitch LogLevel { get; } = new LoggingLevelSwitch(Serilog.Events.LogEventLevel.Information);
-
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
@@ -31,7 +29,6 @@ namespace RedLeg.Forms
                            .Enrich.WithProperty("Application", context.HostingEnvironment.ApplicationName)
                            .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName)
                            .Enrich.WithProperty("Version", $"{typeof(Startup).Assembly.GetName().Version}")
-                           .WriteTo.Seq(serverUrl: "https://logs.redleg.app", apiKey: context.Configuration.GetValue<string>("Seq:ApiKey"), controlLevelSwitch: LogLevel)
                            .MinimumLevel.ControlledBy(LogLevel)
                            .CreateLogger();
 
