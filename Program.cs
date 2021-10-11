@@ -8,6 +8,8 @@ namespace RedLeg.Forms
 {
     public class Program
     {
+        public static LoggingLevelSwitch LogLevel { get; } = new LoggingLevelSwitch(Serilog.Events.LogEventLevel.Information);
+        
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
