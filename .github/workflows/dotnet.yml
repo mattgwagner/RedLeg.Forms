@@ -12,7 +12,8 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1.8.2
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: 6.0.x
+        include-prerelease: true
 
     - name: Build and Publish
       run: dotnet publish RedLeg.Forms.csproj --configuration Release --output ${{env.DOTNET_ROOT}}/artifacts 
