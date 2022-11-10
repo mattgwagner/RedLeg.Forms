@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <DocumentationFile>RedLeg.Forms.xml</DocumentationFile>
     <ApplicationInsightsResourceId>/subscriptions/2079ddb2-a1a4-4bb6-9aa9-8226b71d8ddc/resourceGroups/redlegdev/providers/microsoft.insights/components/redleglogs</ApplicationInsightsResourceId>
     <UserSecretsId>48ee447a-3775-4f35-81e7-bf987e90df60</UserSecretsId>
